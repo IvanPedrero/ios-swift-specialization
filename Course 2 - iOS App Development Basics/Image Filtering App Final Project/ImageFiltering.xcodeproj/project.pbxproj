@@ -38,7 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		82B4754B252AB0E4009EE3D5 /* ImageFiltering.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageFiltering.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		82B4754B252AB0E4009EE3D5 /* Image Filter App Course 2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Image Filter App Course 2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		82B4754E252AB0E4009EE3D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		82B47550252AB0E4009EE3D5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		82B47552252AB0E4009EE3D5 /* PhotoFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoFilterViewController.swift; sourceTree = "<group>"; };
@@ -95,7 +95,7 @@
 		82B4754C252AB0E4009EE3D5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				82B4754B252AB0E4009EE3D5 /* ImageFiltering.app */,
+				82B4754B252AB0E4009EE3D5 /* Image Filter App Course 2.app */,
 				82B47564252AB0E9009EE3D5 /* ImageFilteringTests.xctest */,
 				82B4756F252AB0E9009EE3D5 /* ImageFilteringUITests.xctest */,
 			);
@@ -186,7 +186,7 @@
 			);
 			name = ImageFiltering;
 			productName = ImageFiltering;
-			productReference = 82B4754B252AB0E4009EE3D5 /* ImageFiltering.app */;
+			productReference = 82B4754B252AB0E4009EE3D5 /* Image Filter App Course 2.app */;
 			productType = "com.apple.product-type.application";
 		};
 		82B47563252AB0E9009EE3D5 /* ImageFilteringTests */ = {
@@ -485,7 +485,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.scific.ImageFiltering;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Image Filter App Course 2";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -502,7 +502,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.scific.ImageFiltering;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Image Filter App Course 2";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
