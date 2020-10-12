@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hjm-yh-irs">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Item-->
+        <scene sceneID="Cot-10-kqM">
+            <objects>
+                <navigationController id="DWd-wZ-Egk" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="IdI-yx-Xqf"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jFS-g5-r5y">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Vkg-W4-m0L" kind="relationship" relationship="rootViewController" id="uhv-t1-Yfl"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pVv-mf-EXh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1341" y="424"/>
+        </scene>
+        <!--Image Moderation-->
+        <scene sceneID="KTT-Wg-QYx">
+            <objects>
+                <viewController id="Vkg-W4-m0L" customClass="ImageModerationViewController" customModule="Content_Moderator" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5OU-gd-ZHh">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T0k-aY-eL5" userLabel="Input View">
+                                <rect key="frame" x="14" y="104" width="386" height="350"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ai3-mg-wfU">
+                                        <rect key="frame" x="126.5" y="289" width="133" height="46"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Analyze"/>
+                                    </button>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="puppy" translatesAutoresizingMaskIntoConstraints="NO" id="VHT-eG-jLB">
+                                        <rect key="frame" x="14" y="22" width="359" height="239"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mYX-m1-vLs">
+                                <rect key="frame" x="14" y="470" width="386" height="323"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Analysis results:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ube-Xn-FA5">
+                                        <rect key="frame" x="20" y="8" width="358" height="72"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xim-XY-d2D">
+                                        <rect key="frame" x="14" y="72" width="358" height="224"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.94892626999999996" green="0.94908505679999999" blue="0.94890528919999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="rT6-An-Ie8"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Image" image="camera.on.rectangle" catalog="system" id="ZXh-hq-7Q3"/>
+                    <navigationItem key="navigationItem" title="Image Moderation" id="UIq-0Z-znl"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cpe-bv-vEo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2260.8695652173915" y="423.88392857142856"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="gmI-ae-FI5">
+            <objects>
+                <navigationController id="n1D-fT-NjQ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="jCF-Nq-y1G"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jWZ-0a-oGh">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="AUV-mU-YQ6" kind="relationship" relationship="rootViewController" id="Uzn-Wt-bAd"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tIz-tY-hv5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1342" y="-417"/>
+        </scene>
+        <!--Text Moderation-->
+        <scene sceneID="4IV-RW-wwR">
+            <objects>
+                <viewController title="Text Moderation" id="AUV-mU-YQ6" customClass="TextModerationViewController" customModule="Content_Moderator" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KT5-yS-SbS">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FgC-ID-bMZ">
+                                <rect key="frame" x="14" y="474" width="386" height="323"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Analysis results:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0yc-Ca-vbh">
+                                        <rect key="frame" x="20" y="8" width="346" height="39"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="39" id="cCw-0i-gKY"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QRC-6Z-zn3">
+                                        <rect key="frame" x="20" y="55" width="346" height="244"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="QRC-6Z-zn3" firstAttribute="top" secondItem="0yc-Ca-vbh" secondAttribute="bottom" constant="8" id="BQv-Kb-J8h"/>
+                                    <constraint firstItem="0yc-Ca-vbh" firstAttribute="top" secondItem="FgC-ID-bMZ" secondAttribute="topMargin" id="G19-pl-eyD"/>
+                                    <constraint firstItem="0yc-Ca-vbh" firstAttribute="centerX" secondItem="FgC-ID-bMZ" secondAttribute="centerX" id="GfQ-59-Pf3"/>
+                                    <constraint firstAttribute="trailing" secondItem="QRC-6Z-zn3" secondAttribute="trailing" constant="20" id="KAa-y3-cFN"/>
+                                    <constraint firstAttribute="bottom" secondItem="QRC-6Z-zn3" secondAttribute="bottom" constant="24" id="Uyw-a3-eov"/>
+                                    <constraint firstItem="QRC-6Z-zn3" firstAttribute="leading" secondItem="FgC-ID-bMZ" secondAttribute="leading" constant="20" id="VBf-Km-FPH"/>
+                                    <constraint firstItem="0yc-Ca-vbh" firstAttribute="leading" secondItem="FgC-ID-bMZ" secondAttribute="leading" constant="20" id="Y6s-Sv-rMK"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dIe-W5-78r" userLabel="Input View">
+                                <rect key="frame" x="14" y="108" width="386" height="350"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Enter some text to moderate..." translatesAutoresizingMaskIntoConstraints="NO" id="pHF-9q-ORb">
+                                        <rect key="frame" x="20" y="22" width="346" height="248"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o49-h4-LQV">
+                                        <rect key="frame" x="126.5" y="289" width="133" height="46"/>
+                                        <color key="backgroundColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="46" id="5aF-FH-YBQ"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="133" id="nMM-bL-mOO"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Analyze"/>
+                                        <connections>
+                                            <action selector="sendRequest:" destination="AUV-mU-YQ6" eventType="touchUpInside" id="b5h-DL-7Fi"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="pHF-9q-ORb" firstAttribute="top" secondItem="dIe-W5-78r" secondAttribute="top" constant="22" id="Cgc-2i-ASL"/>
+                                    <constraint firstAttribute="bottom" secondItem="o49-h4-LQV" secondAttribute="bottom" constant="15" id="Hbx-nk-RkG"/>
+                                    <constraint firstItem="pHF-9q-ORb" firstAttribute="centerX" secondItem="dIe-W5-78r" secondAttribute="centerX" id="UdG-uR-JNR"/>
+                                    <constraint firstItem="pHF-9q-ORb" firstAttribute="centerX" secondItem="o49-h4-LQV" secondAttribute="centerX" id="V3x-Bc-ja7"/>
+                                    <constraint firstItem="pHF-9q-ORb" firstAttribute="leading" secondItem="dIe-W5-78r" secondAttribute="leading" constant="20" id="WIE-BD-SsY"/>
+                                    <constraint firstItem="o49-h4-LQV" firstAttribute="top" secondItem="pHF-9q-ORb" secondAttribute="bottom" constant="19" id="vkp-E8-CIy"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.9479365152150846" green="0.9479365152150846" blue="0.9479365152150846" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="ncD-cb-oA6" firstAttribute="trailing" secondItem="FgC-ID-bMZ" secondAttribute="trailing" constant="14" id="5gS-om-WXr"/>
+                            <constraint firstItem="FgC-ID-bMZ" firstAttribute="top" secondItem="dIe-W5-78r" secondAttribute="bottom" constant="16" id="IuS-5O-MoU"/>
+                            <constraint firstItem="ncD-cb-oA6" firstAttribute="bottom" secondItem="FgC-ID-bMZ" secondAttribute="bottom" constant="16" id="LH7-kC-cak"/>
+                            <constraint firstItem="FgC-ID-bMZ" firstAttribute="top" secondItem="KT5-yS-SbS" secondAttribute="top" constant="474" id="Pvb-bU-6eX"/>
+                            <constraint firstItem="dIe-W5-78r" firstAttribute="top" secondItem="ncD-cb-oA6" secondAttribute="top" constant="20" id="T7S-ka-rle"/>
+                            <constraint firstItem="ncD-cb-oA6" firstAttribute="trailing" secondItem="dIe-W5-78r" secondAttribute="trailing" constant="14" id="ahk-zY-Al8"/>
+                            <constraint firstItem="dIe-W5-78r" firstAttribute="leading" secondItem="ncD-cb-oA6" secondAttribute="leading" constant="14" id="dhm-Ii-t5h"/>
+                            <constraint firstItem="FgC-ID-bMZ" firstAttribute="leading" secondItem="ncD-cb-oA6" secondAttribute="leading" constant="14" id="znj-ZT-4WK"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ncD-cb-oA6"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Text" image="pencil.and.ellipsis.rectangle" catalog="system" id="1dm-aW-8gA"/>
+                    <navigationItem key="navigationItem" title="Text Moderation" id="uB6-Bj-Kxs"/>
+                    <connections>
+                        <outlet property="inputRequestView" destination="dIe-W5-78r" id="LNI-D7-TaD"/>
+                        <outlet property="resultModerationTextView" destination="QRC-6Z-zn3" id="oLD-ds-xYe"/>
+                        <outlet property="resultRequestView" destination="FgC-ID-bMZ" id="OLv-Ph-srW"/>
+                        <outlet property="sendRequestButton" destination="o49-h4-LQV" id="MLB-eM-CmO"/>
+                        <outlet property="textModerationTextView" destination="pHF-9q-ORb" id="U1K-vA-AJ1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yAe-oL-8c5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2260.8695652173915" y="-417.1875"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="ScQ-z9-hRt">
+            <objects>
+                <tabBarController id="hjm-yh-irs" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="OaP-v0-I2h">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="n1D-fT-NjQ" kind="relationship" relationship="viewControllers" id="dUj-gs-iIN"/>
+                        <segue destination="DWd-wZ-Egk" kind="relationship" relationship="viewControllers" id="SiR-4o-jeB"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pS9-fg-wqO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="313" y="84"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="camera.on.rectangle" catalog="system" width="128" height="96"/>
+        <image name="pencil.and.ellipsis.rectangle" catalog="system" width="128" height="81"/>
+        <image name="puppy" width="360" height="199.5"/>
+    </resources>
+</document>
