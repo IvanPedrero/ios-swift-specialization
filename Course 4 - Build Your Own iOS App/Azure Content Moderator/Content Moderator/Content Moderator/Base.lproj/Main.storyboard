@@ -45,11 +45,21 @@
                                         <color key="backgroundColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Analyze"/>
+                                        <connections>
+                                            <action selector="sendRequest:" destination="Vkg-W4-m0L" eventType="touchUpInside" id="2W5-Xm-xwC"/>
+                                        </connections>
                                     </button>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="puppy" translatesAutoresizingMaskIntoConstraints="NO" id="VHT-eG-jLB">
-                                        <rect key="frame" x="14" y="22" width="359" height="239"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="VHT-eG-jLB">
+                                        <rect key="frame" x="14" y="60" width="359" height="204"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tap to change the image..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Nt-CD-uLW">
+                                        <rect key="frame" x="15" y="0.0" width="358" height="52"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
@@ -75,12 +85,42 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Qu-yZ-aQR" userLabel="Loading View">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="5kh-N2-QJ1">
+                                        <rect key="frame" x="120" y="290" width="174" height="145"/>
+                                        <color key="color" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.097977311643835621" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="5kh-N2-QJ1" firstAttribute="leading" secondItem="9Qu-yZ-aQR" secondAttribute="leading" constant="120" id="Ffp-ed-xce"/>
+                                    <constraint firstAttribute="bottom" secondItem="5kh-N2-QJ1" secondAttribute="bottom" constant="290" id="mIN-J0-eIh"/>
+                                    <constraint firstAttribute="trailing" secondItem="5kh-N2-QJ1" secondAttribute="trailing" constant="120" id="tBX-AU-Mpm"/>
+                                    <constraint firstItem="5kh-N2-QJ1" firstAttribute="top" secondItem="9Qu-yZ-aQR" secondAttribute="top" constant="290" id="ulW-8m-u7b"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.94892626999999996" green="0.94908505679999999" blue="0.94890528919999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="9Qu-yZ-aQR" firstAttribute="bottom" secondItem="rT6-An-Ie8" secondAttribute="bottom" id="4pH-O5-Q6C"/>
+                            <constraint firstItem="9Qu-yZ-aQR" firstAttribute="leading" secondItem="rT6-An-Ie8" secondAttribute="leading" id="K0R-bZ-Tqr"/>
+                            <constraint firstItem="9Qu-yZ-aQR" firstAttribute="top" secondItem="rT6-An-Ie8" secondAttribute="top" id="aqV-GA-a87"/>
+                            <constraint firstItem="9Qu-yZ-aQR" firstAttribute="trailing" secondItem="rT6-An-Ie8" secondAttribute="trailing" id="dHd-RQ-car"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="rT6-An-Ie8"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Image" image="camera.on.rectangle" catalog="system" id="ZXh-hq-7Q3"/>
                     <navigationItem key="navigationItem" title="Image Moderation" id="UIq-0Z-znl"/>
+                    <connections>
+                        <outlet property="imageView" destination="VHT-eG-jLB" id="1wB-Hk-WZj"/>
+                        <outlet property="inputRequestView" destination="T0k-aY-eL5" id="Itj-a1-NrN"/>
+                        <outlet property="loaderView" destination="9Qu-yZ-aQR" id="JPF-jj-Va2"/>
+                        <outlet property="resultModerationTextView" destination="Xim-XY-d2D" id="9oV-AM-1bC"/>
+                        <outlet property="resultRequestView" destination="mYX-m1-vLs" id="UZA-oH-fFl"/>
+                        <outlet property="sendRequestButton" destination="Ai3-mg-wfU" id="S8W-52-Cv0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cpe-bv-vEo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -230,6 +270,6 @@
     <resources>
         <image name="camera.on.rectangle" catalog="system" width="128" height="96"/>
         <image name="pencil.and.ellipsis.rectangle" catalog="system" width="128" height="81"/>
-        <image name="puppy" width="360" height="199.5"/>
+        <image name="placeholder" width="256" height="256"/>
     </resources>
 </document>

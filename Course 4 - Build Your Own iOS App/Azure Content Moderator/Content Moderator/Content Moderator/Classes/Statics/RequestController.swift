@@ -11,7 +11,7 @@ import  UIKit
 
 class RequestController {
     
-    private static let subscriptionKey:String = "<YOUR-API-KEY>"
+    private static let subscriptionKey:String = ""
 
     
     static func moderateText(data:String, completion: @escaping (Dictionary<String, AnyObject>?)->()) {

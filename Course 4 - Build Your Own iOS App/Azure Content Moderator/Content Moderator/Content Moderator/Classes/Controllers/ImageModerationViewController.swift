@@ -9,64 +9,210 @@
 import UIKit
 
 
-class ImageModerationViewController: UIViewController {
+class ImageModerationViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+    
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var sendRequestButton: UIButton!
+    @IBOutlet weak var resultModerationTextView: UITextView!
+    
+    @IBOutlet weak var inputRequestView: UIView!
+    @IBOutlet weak var resultRequestView: UIView!
+    @IBOutlet weak var loaderView: UIView!
+    
 
+    private var imageChanged:Bool = false
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        moderate(image: UIImage(named: "puppy")!)
+        stylizeView()
+        setRecognizers()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        imageView.image = UIImage(named: "placeholder")
+        imageChanged = false
+        enableResultView(hide: true)
+        enableLoader(hide: true)
+    }
+    
+    private func setRecognizers(){
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(onImageTap(tapGestureRecognizer:)))
+        imageView.isUserInteractionEnabled = true
+        imageView.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    @objc func onImageTap(tapGestureRecognizer: UITapGestureRecognizer) {
+        let actionSheet = UIAlertController(title: "Select picture from...", message: nil, preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: {
+            action in
+            self.showCamera()
+        }))
+        actionSheet.addAction(UIAlertAction(title: "Album", style: .default, handler: {
+            action in
+            self.showAlbum()
+        }))
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        present(actionSheet, animated: true, completion: nil)
+    }
+    
+    private func stylizeView(){
+        // Text view styling.
+        resultModerationTextView.layer.borderWidth = 0.5
+        resultModerationTextView.layer.borderColor = UIColor.lightGray.cgColor
+        resultModerationTextView.layer.cornerRadius = 15
+        resultModerationTextView.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        
+        // Container view styling.
+        inputRequestView.layer.cornerRadius = 10
+        inputRequestView.layer.shadowColor = UIColor.black.cgColor
+        inputRequestView.layer.shadowOpacity = 0.2
+        inputRequestView.layer.shadowOffset = .zero
+        inputRequestView.layer.shadowRadius = 3
+        
+        resultRequestView.layer.cornerRadius = 10
+        resultRequestView.layer.shadowColor = UIColor.black.cgColor
+        resultRequestView.layer.shadowOpacity = 0.2
+        resultRequestView.layer.shadowOffset = .zero
+        resultRequestView.layer.shadowRadius = 3
+        
+        // Image view styling.
+        imageView.layer.cornerRadius = 8.0
+        
+        // Button styling.
+        sendRequestButton.layer.cornerRadius = 10
+        
+    }
+    
+    private func enableResultView(hide:Bool) {
+        resultRequestView.isHidden = hide
+    }
+    
+    private func enableLoader(hide:Bool) {
+        loaderView.isHidden = hide
+    }
+    
+    @IBAction func sendRequest(_ sender: Any) {
+        // Check the text view for good input.
+        if imageView.image == nil || imageChanged == false {
+            print("Not a valid image...")
+            return
+        }
+        
+        // Perform the request.
+        moderate(image: imageView.image!)
+    }
     
     func moderate(image:UIImage){
+        enableLoader(hide: false)
         
         RequestController.moderateImage(data: (image.pngData())!, completion: { dic in
             if let dic = dic{
                 // Update GUI from request information.
                 DispatchQueue.main.async {
+                    
                     print(dic)
                     // Enable the result view.
-                    //self.enableResultView(hide: false)
+                    self.enableResultView(hide: false)
+                    self.enableLoader(hide: true)
                     
-                    //self.newConfirmedLabel.text = String(format: "%@", dic["NewConfirmed"] as! CVarArg)
-                    /*var classificationText:String! = ""
-                    if let classification =  dic["Classification"] as? [String: Any] {
+                    var classificationText:String! = ""
+                    if let res =  dic["Status"] as? [String: Any] {
                         
-                        if let class1 = classification["Category1"] as? [String: Any] {
-                            let score:Double = class1["Score"] as! Double
-                            classificationText += "Sexually explicit or adult :  \((score*100).rounded(toPlaces: 2))% \n"
-                        }
+                        if res["Description"] as! String != "OK" { return }
                         
-                        if let class2 = classification["Category2"] as? [String: Any] {
-                            let score:Double = class2["Score"] as! Double
-                            classificationText += "Sexually suggestive or mature :  \((score*100).rounded(toPlaces: 2))% \n"
-                        }
-                        
-                        if let class3 = classification["Category3"] as? [String: Any] {
-                            let score:Double = class3["Score"] as! Double
-                            classificationText += "Offensive in certain situations :  \((score*100).rounded(toPlaces: 2))% \n"
-                        }
-                        if let recommendation = classification["ReviewRecommended"] as? Int {
-                            classificationText += "\nRequires revision: "
-                            if recommendation == 0 {
-                                classificationText += "No"
+                        if let isRacy:Int = dic["IsImageRacyClassified"] as? Int {
+                            var racyText:String = ""
+                            if isRacy == 0 {
+                                racyText = "No"
                             }else{
-                                classificationText += "Yes"
+                                racyText = "Yes"
                             }
+                            classificationText += "Is the image racist? :  \(racyText) \n"
+                        }
+                        
+                        if let racyScore:Double = dic["RacyClassificationScore"] as? Double {
+                            classificationText += "Racist content percentage :  \((racyScore*100).rounded(toPlaces: 2))% \n\n"
+                        }
+                        
+                        if let isAdult:Int = dic["IsImageAdultClassified"] as? Int {
+                            var adultText:String = ""
+                            if isAdult == 0 {
+                                adultText = "No"
+                            }else{
+                                adultText = "Yes"
+                            }
+                            classificationText += "Is the image for adults? :  \(adultText) \n"
+                        }
+                        
+                        if let racyScore:Double = dic["AdultClassificationScore"] as? Double {
+                            classificationText += "Adult content percentage :  \((racyScore*100).rounded(toPlaces: 2))% \n"
                         }
                     }else{
                         classificationText = "There was an error in the request, try it later..."
                     }
                     
-                    self.resultModerationTextView.text = classificationText*/
+                    self.resultModerationTextView.text = classificationText
                 }
             }else{
-                    print("Error")
+                DispatchQueue.main.async {
+                    self.resultModerationTextView.text = "There was an error in the request, try it later..."
+                    self.enableLoader(hide: false)
+                }
             }
         })
     }
+    
+    // MARK: - Photo delgate methods
+    
+    func showCamera(){
+        let cameraPicker = UIImagePickerController()
+        cameraPicker.delegate = self
+        cameraPicker.sourceType = .camera
+        
+        present(cameraPicker, animated: true, completion: nil)
+    }
+    
+    func showAlbum(){
+        let cameraPicker = UIImagePickerController()
+        cameraPicker.delegate = self
+        cameraPicker.sourceType = .savedPhotosAlbum
+        
+        present(cameraPicker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            swapImage(swap: imageView, to: image)
+            imageChanged = true
+            self.enableResultView(hide: true)
+        }
+        
+        dismiss(animated: true, completion:nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion:nil)
+    }
 
+    func swapImage(swap imageView:UIImageView, to dest:UIImage){
+        imageView.alpha = 1.0
+        UIView.animate(withDuration: 0.2, animations: {
+            imageView.alpha = 0
+        }){ completed in
+            if completed {
+                imageView.image = dest
+                UIView.animate(withDuration: 0.2){
+                    imageView.alpha = 1.0
+                }
+            }
+        }
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -78,3 +224,4 @@ class ImageModerationViewController: UIViewController {
     */
 
 }
+
