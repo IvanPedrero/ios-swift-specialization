@@ -45,18 +45,46 @@ class ImageModerationViewController: UIViewController, UIImagePickerControllerDe
     }
     
     @objc func onImageTap(tapGestureRecognizer: UITapGestureRecognizer) {
-        let actionSheet = UIAlertController(title: "Select picture from...", message: nil, preferredStyle: .actionSheet)
-        actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: {
-            action in
-            self.showCamera()
-        }))
-        actionSheet.addAction(UIAlertAction(title: "Album", style: .default, handler: {
-            action in
-            self.showAlbum()
-        }))
-        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
-        present(actionSheet, animated: true, completion: nil)
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            showImageOptions(isIpad: true)
+        }else{
+            showImageOptions(isIpad: false)
+        }
+        
+        
+    }
+    
+    private func showImageOptions(isIpad: Bool){
+        // Shown in iPad.
+        if isIpad {
+            let pictureAlert = UIAlertController(title: "Select picture from...", message: nil, preferredStyle: UIAlertController.Style.alert)
+
+            pictureAlert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (action: UIAlertAction!) in
+                self.showCamera()
+            }))
+
+            pictureAlert.addAction(UIAlertAction(title: "Album", style: .default, handler: { (action: UIAlertAction!) in
+                self.showAlbum()
+            }))
+
+            present(pictureAlert, animated: true, completion: nil)
+        }
+        // Shown in iPhone.
+        else{
+            let actionSheet = UIAlertController(title: "Select picture from...", message: nil, preferredStyle: .actionSheet)
+            actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: {
+                action in
+                self.showCamera()
+            }))
+            actionSheet.addAction(UIAlertAction(title: "Album", style: .default, handler: {
+                action in
+                self.showAlbum()
+            }))
+            actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            
+            present(actionSheet, animated: true, completion: nil)
+        }
     }
     
     private func stylizeView(){

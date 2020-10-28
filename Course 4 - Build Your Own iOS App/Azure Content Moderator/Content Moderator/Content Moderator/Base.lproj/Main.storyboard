@@ -219,16 +219,36 @@
                                     <constraint firstItem="o49-h4-LQV" firstAttribute="top" secondItem="pHF-9q-ORb" secondAttribute="bottom" constant="19" id="vkp-E8-CIy"/>
                                 </constraints>
                             </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f92-aw-Tup" userLabel="Loading View">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="PGw-2B-IHZ">
+                                        <rect key="frame" x="157" y="312" width="100" height="100"/>
+                                        <color key="color" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.097977311639999995" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="PGw-2B-IHZ" secondAttribute="bottom" constant="313" id="60c-HT-wsd"/>
+                                    <constraint firstItem="PGw-2B-IHZ" firstAttribute="leading" secondItem="f92-aw-Tup" secondAttribute="leading" constant="157" id="6FW-AJ-Sna"/>
+                                    <constraint firstItem="PGw-2B-IHZ" firstAttribute="top" secondItem="f92-aw-Tup" secondAttribute="top" constant="312" id="R5f-12-GaH"/>
+                                    <constraint firstAttribute="trailing" secondItem="PGw-2B-IHZ" secondAttribute="trailing" constant="157" id="Rx8-KI-Rav"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.9479365152150846" green="0.9479365152150846" blue="0.9479365152150846" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="f92-aw-Tup" firstAttribute="trailing" secondItem="ncD-cb-oA6" secondAttribute="trailing" id="3P0-s6-ja7"/>
                             <constraint firstItem="ncD-cb-oA6" firstAttribute="trailing" secondItem="FgC-ID-bMZ" secondAttribute="trailing" constant="14" id="5gS-om-WXr"/>
+                            <constraint firstItem="ncD-cb-oA6" firstAttribute="bottom" secondItem="f92-aw-Tup" secondAttribute="bottom" id="Al2-wH-kxc"/>
                             <constraint firstItem="FgC-ID-bMZ" firstAttribute="top" secondItem="dIe-W5-78r" secondAttribute="bottom" constant="16" id="IuS-5O-MoU"/>
                             <constraint firstItem="ncD-cb-oA6" firstAttribute="bottom" secondItem="FgC-ID-bMZ" secondAttribute="bottom" constant="16" id="LH7-kC-cak"/>
                             <constraint firstItem="FgC-ID-bMZ" firstAttribute="top" secondItem="KT5-yS-SbS" secondAttribute="top" constant="474" id="Pvb-bU-6eX"/>
                             <constraint firstItem="dIe-W5-78r" firstAttribute="top" secondItem="ncD-cb-oA6" secondAttribute="top" constant="20" id="T7S-ka-rle"/>
+                            <constraint firstItem="f92-aw-Tup" firstAttribute="leading" secondItem="ncD-cb-oA6" secondAttribute="leading" id="Wi8-E1-cOU"/>
                             <constraint firstItem="ncD-cb-oA6" firstAttribute="trailing" secondItem="dIe-W5-78r" secondAttribute="trailing" constant="14" id="ahk-zY-Al8"/>
                             <constraint firstItem="dIe-W5-78r" firstAttribute="leading" secondItem="ncD-cb-oA6" secondAttribute="leading" constant="14" id="dhm-Ii-t5h"/>
+                            <constraint firstItem="f92-aw-Tup" firstAttribute="top" secondItem="ncD-cb-oA6" secondAttribute="top" id="rUa-84-mUn"/>
                             <constraint firstItem="FgC-ID-bMZ" firstAttribute="leading" secondItem="ncD-cb-oA6" secondAttribute="leading" constant="14" id="znj-ZT-4WK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ncD-cb-oA6"/>
@@ -237,6 +257,7 @@
                     <navigationItem key="navigationItem" title="Text Moderation" id="uB6-Bj-Kxs"/>
                     <connections>
                         <outlet property="inputRequestView" destination="dIe-W5-78r" id="LNI-D7-TaD"/>
+                        <outlet property="loaderView" destination="f92-aw-Tup" id="KZg-dY-Y5t"/>
                         <outlet property="resultModerationTextView" destination="QRC-6Z-zn3" id="oLD-ds-xYe"/>
                         <outlet property="resultRequestView" destination="FgC-ID-bMZ" id="OLv-Ph-srW"/>
                         <outlet property="sendRequestButton" destination="o49-h4-LQV" id="MLB-eM-CmO"/>

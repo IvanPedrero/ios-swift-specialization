@@ -17,6 +17,8 @@ class TextModerationViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var inputRequestView: UIView!
     @IBOutlet weak var resultRequestView: UIView!
     
+    @IBOutlet weak var loaderView: UIView!
+    
     
     let inputPlaceholder:String! = "Enter a comment to analyze..."
     
@@ -33,6 +35,7 @@ class TextModerationViewController: UIViewController, UITextViewDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         enableResultView(hide: true)
+        enableLoader(hide: true)
         dismissKeyboard()
     }
     
@@ -88,6 +91,10 @@ class TextModerationViewController: UIViewController, UITextViewDelegate {
         resultRequestView.isHidden = hide
     }
     
+    private func enableLoader(hide:Bool) {
+        loaderView.isHidden = hide
+    }
+    
     
     @IBAction func sendRequest(_ sender: Any) {
         // Check the text view for good input.
@@ -107,6 +114,7 @@ class TextModerationViewController: UIViewController, UITextViewDelegate {
     
     /// This function will perform the request to moderate a given text and will display it on the screen.
     private func moderate(text: String){
+        enableLoader(hide: false)
         RequestController.moderateText(data: text, completion: { dic in
             if let dic = dic{
                 // Update GUI from request information.
@@ -145,10 +153,14 @@ class TextModerationViewController: UIViewController, UITextViewDelegate {
                         classificationText = "There was an error in the request, try it later..."
                     }
                     
+                    self.enableLoader(hide: true)
                     self.resultModerationTextView.text = classificationText
                 }
             }else{
-                    print("Error")
+                DispatchQueue.main.async {
+                    self.enableLoader(hide: true)
+                    self.resultModerationTextView.text = "There was an error in the request, try it later..."
+                }
             }
         })
     }
