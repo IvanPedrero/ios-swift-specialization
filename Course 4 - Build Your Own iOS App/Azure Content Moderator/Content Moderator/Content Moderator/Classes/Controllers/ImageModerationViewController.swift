@@ -29,11 +29,17 @@ class ImageModerationViewController: UIViewController, UIImagePickerControllerDe
         // Do any additional setup after loading the view.
         stylizeView()
         setRecognizers()
+        setUpView()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    func setUpView() {
         imageView.image = UIImage(named: "placeholder")
         imageChanged = false
+        enableResultView(hide: true)
+        enableLoader(hide: true)
+    }
+    
+    func resetView(){
         enableResultView(hide: true)
         enableLoader(hide: true)
     }
@@ -45,6 +51,8 @@ class ImageModerationViewController: UIViewController, UIImagePickerControllerDe
     }
     
     @objc func onImageTap(tapGestureRecognizer: UITapGestureRecognizer) {
+        
+        resetView()
         
         if UIDevice.current.userInterfaceIdiom == .pad {
             showImageOptions(isIpad: true)
@@ -124,6 +132,7 @@ class ImageModerationViewController: UIViewController, UIImagePickerControllerDe
     }
     
     @IBAction func sendRequest(_ sender: Any) {
+        print(imageView.image)
         // Check the text view for good input.
         if imageView.image == nil || imageChanged == false {
             print("Not a valid image...")
@@ -159,11 +168,11 @@ class ImageModerationViewController: UIViewController, UIImagePickerControllerDe
                             }else{
                                 racyText = "Yes"
                             }
-                            classificationText += "Is the image racist? :  \(racyText) \n"
+                            classificationText += "Is the image racy? :  \(racyText) \n"
                         }
                         
                         if let racyScore:Double = dic["RacyClassificationScore"] as? Double {
-                            classificationText += "Racist content percentage :  \((racyScore*100).rounded(toPlaces: 2))% \n\n"
+                            classificationText += "Racy content percentage :  \((racyScore*100).rounded(toPlaces: 2))% \n\n"
                         }
                         
                         if let isAdult:Int = dic["IsImageAdultClassified"] as? Int {
@@ -215,7 +224,7 @@ class ImageModerationViewController: UIViewController, UIImagePickerControllerDe
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            swapImage(swap: imageView, to: image)
+            imageView.image = image
             imageChanged = true
             self.enableResultView(hide: true)
         }
@@ -225,20 +234,6 @@ class ImageModerationViewController: UIViewController, UIImagePickerControllerDe
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion:nil)
-    }
-
-    func swapImage(swap imageView:UIImageView, to dest:UIImage){
-        imageView.alpha = 1.0
-        UIView.animate(withDuration: 0.2, animations: {
-            imageView.alpha = 0
-        }){ completed in
-            if completed {
-                imageView.image = dest
-                UIView.animate(withDuration: 0.2){
-                    imageView.alpha = 1.0
-                }
-            }
-        }
     }
     
     /*

@@ -11,7 +11,7 @@ import  UIKit
 
 class RequestController {
     
-    private static let subscriptionKey:String = ""
+    private static let subscriptionKey:String = "84e9353f297e45a9aed4f8f1fd17571c"
 
     
     static func moderateText(data:String, completion: @escaping (Dictionary<String, AnyObject>?)->()) {
