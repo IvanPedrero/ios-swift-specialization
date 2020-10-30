@@ -132,7 +132,7 @@ class ImageModerationViewController: UIViewController, UIImagePickerControllerDe
     }
     
     @IBAction func sendRequest(_ sender: Any) {
-        print(imageView.image)
+        //print(imageView.image as Any)
         // Check the text view for good input.
         if imageView.image == nil || imageChanged == false {
             print("Not a valid image...")
