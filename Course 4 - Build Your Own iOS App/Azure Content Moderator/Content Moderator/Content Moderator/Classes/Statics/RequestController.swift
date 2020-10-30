@@ -4,14 +4,17 @@
 //
 //  Created by Ivan Pedrero on 11/10/20.
 //  Copyright © 2020 Ivan Pedrero. All rights reserved.
+//  84e9353f297e45a9aed4f8f1fd17571c
 //
 
 import Foundation
 import  UIKit
 
+
+
 class RequestController {
     
-    private static let subscriptionKey:String = ""
+    private static let subscriptionKey:String = "YOUR_AZURE_KEY"
 
     
     static func moderateText(data:String, completion: @escaping (Dictionary<String, AnyObject>?)->()) {
