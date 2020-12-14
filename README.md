@@ -2,7 +2,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/IvanPedrero/ios-swift-specialization">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Swift_logo.svg/853px-Swift_logo.svg.png" alt="Logo" width="80" height="80">
+    <img src="https://cdn4.iconfinder.com/data/icons/logos-3/504/Swift-2-512.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">iOS App Development with Swift (University of Toronto, 4 course specialization)</h3>
